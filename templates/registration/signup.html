@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{%  block  content %}
+    <style>
+        .invalid-feedback {
+        color: red; /* Make the text red */
+        margin-left: 10px; /* Slightly shift the error message to the right */
+        font-size: 12px; /* Set a consistent font size */
+    }
+    body{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .form-group{
+        margin-bottom: 10px !important;
+        padding-top: 5px;
+
+    }
+
+    .form-group label{
+        padding-top: 10px !important;
+    }
+    .signup{
+        margin: 0;
+    }
+    .main{
+        margin: 0;
+        padding: 0;
+        background: #f8f8f8;
+        background-size: 100%;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .signup-content{
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .signup-content{
+        padding: 20px;
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center !important;;
+        }
+
+
+    .signup-form{
+        width: 50%;
+        margin: 0 !important;
+        padding: 10px !important;
+        margin-right: 40px !important;
+
+    
+    }
+    .signup-image{
+        width: 50%;
+        margin: 0 !important;
+        padding: 0px !important;
+        overflow: hidden;
+        border-radius: 10px !important;
+        padding-right: 20px !important;
+        padding-left: 0 !important;
+        padding-top: 50px !important;
+
+    }
+    .signup-image-link{
+        margin-top: -40px;
+    }
+    
+    .signup-image  img {
+        width: 100%;
+        border-radius: 10px !important;
+        object-fit: cover;
+    }
+    .form-submit{
+        outline: none;
+        border: none;
+    }
+    </style>
+    <div class="main">
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign-up</h2>
+                        <form   method="POST" class="register-form" id="register-form">{% csrf_token %}
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input required type="text" name="first_name" id="name" placeholder="Ism"/>
+                            </div>
+                            {% if form.errors.first_name.0 %}
+                            <div class="invalid-feedback">
+                                {{ form.errors.first_name.0 }}
+                            </div>
+                        {% endif %}
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input required type="text" name="last_name" id="name" placeholder="Familiya"/>
+                            </div>
+                        {% if form.errors.last_name.0 %}
+                            <div class="invalid-feedback" style="">
+                                {{ form.errors.last_name.0 }}
+                            </div>
+                        {% endif %}
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input required type="text" name="username" id="name" placeholder="Foydalanuvchi nomi"/>
+                            </div>
+                        {% if form.errors.username.0 %}
+                            <div class="invalid-feedback">
+                                {{ form.errors.username.0 }}
+                            </div>
+                        {% endif %}
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input required type="email" name="email" id="email" placeholder="Sizning Email"/>
+                            </div>
+                        {% if form.errors.email.0 %}
+                            <div class="invalid-feedback">
+                                {{ form.errors.email.0 }}
+                            </div>
+                        {% endif %}
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input required type="password" name="password1" id="pass" placeholder="Parol"/>
+                            </div>
+                        {% if form.errors.password1.0 %}
+                            <div class="invalid-feedback">
+                                {{ form.errors.password1.0 }}
+                            </div>
+                        {% endif %}
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input required type="password" name="password2" id="re_pass" placeholder="Parolni tasdiqlang"/>
+                            </div>
+                        {% if form.errors.password2.0 %}
+                        <div class="invalid-feedback">
+                            {{ form.errors.password2.0 }}
+                        </div>
+                    {% endif %}
+                        <div class="form-group">
+                            <input required type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>Qoidalar bilan tanishing  <a href="https://policies.google.com/terms?hl=en-US" class="term-service">Xizmat ko'rsatish shartlari</a></label>
+                        </div>
+                            <div class="form-group form-button">
+                                <button  type="submit" name="signup" id="signup" class="form-submit"  >
+                                    Ro'yxatdan o'tish
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src='/static/Rectangle11.png' alt="sing up image"></figure>
+                        <a href="{% url 'login' %}" class="signup-image-link">Men allaqachon a'zoman</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        function handleSubmit(e) {
+          e.preventDefault(); // Prevents the default form submission behavior
+        }
+      </script>
+{% endblock content %}

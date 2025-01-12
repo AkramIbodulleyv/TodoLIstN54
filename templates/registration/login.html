@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+        body{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+        .signup{
+        margin: 0;
+    }
+    .main{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .signin-content{
+        width: 100% !important;
+        padding: 20px;
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center !important;;
+        gap: 20px;
+    }
+
+
+    .signin-form{
+        width: 50%;
+        margin: 0 !important;
+        padding: 10px !important;
+        margin-right: 40px !important;
+
+    
+    }
+    .signin-image{
+        width: 50%;
+        margin: 0 !important;
+        padding: 20px !important;
+        overflow: hidden;
+        border-radius: 10px !important;
+
+    }
+    
+    .signin-image  img {
+        width: 100%;
+        border-radius: 10px !important;
+        object-fit: cover;
+    }
+    .sign-in{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-group input{
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+    .form-submit{
+        outline: none;
+        border: none;
+        width: 100% !important;
+    }
+</style>
+<div class="main">
+    <!-- Sign in Form -->
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                   <img src='/static/Rectangle12.png'  alt="sing up image">
+                    <a href="{% url 'signup' %}" class="signup-image-link">Sizda akaunt yuqmi ? Unda yarating </a>
+                </div>
+                <div class="signin-form">
+                    <h2 class="form-title">Kirish </h2>
+   <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyiyYw7P3Ou4H0EB2CKR-39VbDLa9s1FyFg&s">
+
+                    <!-- Display error messages -->
+                    {% if messages %}
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <form   method="POST" class="register-form" id="login-form">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input required type="text" name="username" id="your_name" placeholder="Foydalanuvchi nomi"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input required type="password" name="password" id="your_pass" placeholder="Parol"/>
+                        </div>
+                        <div class="form-group">
+                            <input required type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Kirishni eslab qolish</label>
+                        </div>
+                        <div class="form-group form-button">
+                            <button type="submit" name="signin" id="signin" class="form-submit" >
+                                Log in
+                            </button>
+                        </div>
+                    </form>
+                    <div class="social-login">
+                        <span class="social-label">Bizning sahifalar</span>
+                        <ul class="socials">
+                            <li><a href="https://www.facebook.com/profile.php?id=100083162168297"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                            <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    function handleSubmit(e) {
+      e.preventDefault(); // Prevents the default form submission behavior
+      console.log("Form submission prevented");
+    }
+  </script>
+{% endblock content %}

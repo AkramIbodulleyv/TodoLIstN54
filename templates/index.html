@@ -32,6 +32,60 @@
             background-attachment: fixed;
         }
 
+          .search-button5 {
+            padding: 8px 16px;
+            background-color: #C9AC8C;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            position: absolute;
+            top: 24px !important;
+            right: 103px !important;
+            transition: all 0.3s ease;
+            color: white;
+            z-index: 10;
+        }
+          .search-button2:hover {
+            background-color: #b88a6b;
+            transform: scale(1.1);
+        }
+
+        .search-button3:hover {
+            background-color: #b88a6b;
+            transform: scale(1.1);
+        }
+
+        .search-button4:hover {
+            background-color: #b88a6b;
+            transform: scale(1.1);
+        }
+
+        .search-button3:active {
+            background-color: #b88a6b;
+        }
+
+        .search-button4:active {
+            background-color: #b88a6b;
+        }
+
+        .search-button2:hover {
+            background-color: #b88a6b;
+            transform: scale(1.1);
+        }
+
+        .search-button5:hover {
+            background-color: #b88a6b;
+            transform: scale(1.1);
+        }
+
+        .search-button5:active {
+            background-color: #b88a6b;
+        }
+
+        .search-button2:active {
+            background-color: #b88a6b;
+        }
+
         body.dark-mode {
             background-color: var(--bg-dark);
             color: var(--text-dark);
@@ -40,7 +94,7 @@
 
         .container {
             max-width: 800px;
-            margin: 2rem auto;
+            margin: 80px auto;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -237,6 +291,20 @@
         .todo-item span {
             z-index: 1;
         }
+        .search-button4 {
+            padding: 8px 16px;
+            background-color: #C9AC8C;
+            /* Yangi rang */
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            position: absolute;
+            top: 24px !important;
+            right: 8px !important;
+            transition: all 0.3s ease;
+            color: white;
+            z-index: 10;
+        }
 
         .todo-item .delete-todo {
             margin-left: auto;
@@ -391,6 +459,10 @@
             </li>
             {% endfor %}
         </ul>
+    <div class="auth-buttons">
+        <button onclick="window.location.href='{% url 'login' %}'" class="search-button5">Login</button>
+        <button onclick="window.location.href='{% url 'signup' %}'" class="search-button4">Sign-Up</button>
+    </div>
         <div id="todo-filters">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="active">Active</button>

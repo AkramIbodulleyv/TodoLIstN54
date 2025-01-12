@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BookStockPro DEMO</title>
+    <link
+        rel="shortcut icon"
+        type="image/x-icon"
+        href="{% static 'logopap/logo.jpg' %}"
+    />
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+       <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyiyYw7P3Ou4H0EB2CKR-39VbDLa9s1FyFg&s">
+
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{% block content %}
+
+{% endblock %}
+  <!-- JS -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
