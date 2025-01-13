@@ -32,13 +32,21 @@ APPEND_SLASH = True
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
+    'django.contrib.admin',  # Admin paneli
+    'django.contrib.auth',  # Auth
+    'django.contrib.contenttypes',  # Content types
+    'django.contrib.sessions',  # Sessions
+    'django.contrib.messages',  # Messages
     'django.contrib.staticfiles',
     'todo'
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+    'todo.authentication_backends.EmailBackend',  # Use the correct path to your backend
+    'django.contrib.auth.backends.ModelBackend',  # Fallback to the default backend
+)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

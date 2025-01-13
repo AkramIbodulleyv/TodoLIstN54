@@ -3,12 +3,12 @@
 
 {% block content %}
 <style>
-        body{
+    body{
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
-        .signup{
+    .signup{
         margin: 0;
     }
     .main{
@@ -28,15 +28,11 @@
         align-items: center !important;;
         gap: 20px;
     }
-
-
     .signin-form{
         width: 50%;
         margin: 0 !important;
         padding: 10px !important;
         margin-right: 40px !important;
-
-    
     }
     .signin-image{
         width: 50%;
@@ -44,9 +40,7 @@
         padding: 20px !important;
         overflow: hidden;
         border-radius: 10px !important;
-
     }
-    
     .signin-image  img {
         width: 100%;
         border-radius: 10px !important;
@@ -56,7 +50,6 @@
         width: 100%;
         padding: 20px;
     }
-
     .form-group input{
         width: 100%;
         padding: 12px 20px;
@@ -68,19 +61,18 @@
         width: 100% !important;
     }
 </style>
+
 <div class="main">
     <!-- Sign in Form -->
     <section class="sign-in">
         <div class="container">
             <div class="signin-content">
                 <div class="signin-image">
-                   <img src='/static/Rectangle12.png'  alt="sing up image">
-                    <a href="{% url 'signup' %}" class="signup-image-link">Sizda akaunt yuqmi ? Unda yarating </a>
+                    <img src='/static/Rectangle12.png' alt="sign up image">
+                    <a href="{% url 'signup' %}" class="signup-image-link">Sizda akaunt yuqmi? Unda yarating</a>
                 </div>
                 <div class="signin-form">
-                    <h2 class="form-title">Kirish </h2>
-   <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyiyYw7P3Ou4H0EB2CKR-39VbDLa9s1FyFg&s">
-
+                    <h2 class="form-title">Kirish</h2>
                     <!-- Display error messages -->
                     {% if messages %}
                         <div class="alert alert-danger">
@@ -90,25 +82,27 @@
                         </div>
                     {% endif %}
 
-                    <form   method="POST" class="register-form" id="login-form">{% csrf_token %}
+                    <form method="POST" class="register-form" id="login-form">
+                        {% csrf_token %}
                         <div class="form-group">
-                            <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input required type="text" name="username" id="your_name" placeholder="Foydalanuvchi nomi"/>
+                            <label for="id_username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input required type="text" name="username" id="id_username" placeholder="Email or username" value="{{ form.username.value|default_if_none:'' }}"/>
                         </div>
                         <div class="form-group">
-                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input required type="password" name="password" id="your_pass" placeholder="Parol"/>
+                            <label for="id_password"><i class="zmdi zmdi-lock"></i></label>
+                            <input required type="password" name="password" id="id_password" placeholder="Parol"/>
                         </div>
                         <div class="form-group">
                             <input required type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                             <label for="remember-me" class="label-agree-term"><span><span></span></span>Kirishni eslab qolish</label>
                         </div>
                         <div class="form-group form-button">
-                            <button type="submit" name="signin" id="signin" class="form-submit" >
+                            <button type="submit" name="signin" id="signin" class="form-submit">
                                 Log in
                             </button>
                         </div>
                     </form>
+
                     <div class="social-login">
                         <span class="social-label">Bizning sahifalar</span>
                         <ul class="socials">
@@ -124,8 +118,8 @@
 </div>
 <script>
     function handleSubmit(e) {
-      e.preventDefault(); // Prevents the default form submission behavior
+      e.preventDefault(); 
       console.log("Form submission prevented");
     }
-  </script>
+</script>
 {% endblock content %}

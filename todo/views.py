@@ -98,25 +98,32 @@ def signup_view(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False
+            user = form.save(commit=True)
+            user.is_active = True
             user.save()
 
 
 
 
-            return redirect('/')
+            return redirect('login')
 
     else:
         form = RegistrationForm()
 
     return render(request, 'registration/signup.html', {'form': form})
+# todo/views.py
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+
 def login_view(request):
     form = None
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            username = form.cleaned_data.get('username') 
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
@@ -126,3 +133,9 @@ def login_view(request):
             else:
                 messages.error(request, 'Username or password is incorrect')
     return render(request, 'registration/login.html', {'form': form})
+
+
+def custom_logout(request):
+    logout(request)
+    return redirect('base')
+
